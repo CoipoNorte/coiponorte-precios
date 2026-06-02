@@ -1,0 +1,199 @@
+/* ─── Section layout ─── */
+.pricing-section {
+  padding: var(--section-gap) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.pricing-section:nth-child(odd) {
+  background: var(--bg-secondary);
+}
+.pricing-section:nth-child(even) {
+  background: var(--bg-primary);
+}
+
+.pricing-section__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.pricing-section__emoji {
+  font-size: 2.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ─── Table ─── */
+.pricing-table {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.pricing-table__head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 12px 20px;
+  background: var(--bg-tertiary);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.pricing-table__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+  animation: fadeUp .3s ease both;
+}
+
+.pricing-table__row:last-child { border-bottom: none; }
+
+.pricing-table__row:hover { background: var(--bg-secondary); }
+
+.pricing-table__service {
+  font-size: .9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.pricing-table__price {
+  font-size: .875rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: right;
+  white-space: nowrap;
+  margin-left: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Badge variants for surcharges */
+.pricing-table__badge {
+  font-size: .8rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-align: center;
+  white-space: nowrap;
+  margin-left: 16px;
+}
+
+.pricing-table__badge--warning {
+  background: var(--warning-light);
+  color: #926100;
+}
+
+.pricing-table__badge--danger {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+/* ─── Subsections (Web) ─── */
+.pricing-subsections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.pricing-subsection__title {
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+.pricing-subsection__note {
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: var(--success-light);
+  border-left: 3px solid var(--success);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: .82rem;
+  color: #1e6640;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+/* ─── Plans (Empresas) ─── */
+.pricing-plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.plan-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.plan-card--1 { border-top: 3px solid var(--warning); }
+.plan-card--2 { border-top: 3px solid var(--danger); }
+.plan-card--0 { border-top: 3px solid var(--success); }
+
+.plan-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.plan-card__name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.plan-card__detail {
+  font-size: .8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.plan-card__price {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -.01em;
+}
+
+/* ─── Extra (Recargos) ─── */
+.pricing-extra {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.pricing-extra__subtitle {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+/* Color accent lines per section */
+.pricing-section--blue    .pricing-section__emoji { filter: none; }
+.pricing-section--green   .pricing-table__price   { color: var(--success); }
+.pricing-section--red     .pricing-table__price   { color: var(--danger); }
