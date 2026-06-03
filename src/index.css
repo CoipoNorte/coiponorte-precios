@@ -120,4 +120,4 @@ body {
 /* ─── Responsive helpers ─── */
 @media (max-width: 768px) {
   :root { --section-gap: 64px; }
-}
+}

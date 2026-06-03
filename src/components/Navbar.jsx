@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { sections } from '../data/pricing'
 import './Navbar.css'
+import { smoothScroll } from '../utils/smoothScroll'
 
 const NAV_GROUPS = [
   {
@@ -34,15 +35,6 @@ const NAV_GROUPS = [
     ids: ['empresas', 'recargos'],
   },
 ]
-
-function scrollTo(id) {
-  const el = document.getElementById(id)
-  if (el) {
-    const offset = 80
-    const top = el.getBoundingClientRect().top + window.scrollY - offset
-    window.scrollTo({ top, behavior: 'smooth' })
-  }
-}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -87,7 +79,7 @@ export default function Navbar() {
 
   const handleGroupClick = (group) => {
     if (group.ids.length === 1) {
-      scrollTo(group.ids[0])
+      smoothScroll(group.ids[0])
       setMenuOpen(false)
       setDropdown(null)
     } else {
@@ -106,7 +98,7 @@ export default function Navbar() {
           {/* Brand */}
           <button
             className="navbar__brand"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => smoothScroll('hero')}
           >
             <img
               src="/coiponorte-precios/assets/coiponorteSinFondo.ico"
@@ -144,7 +136,7 @@ export default function Navbar() {
                         <button
                           key={id}
                           className={`navbar__dropdown-item ${activeSection === id ? 'active' : ''}`}
-                          onClick={() => { scrollTo(id); setDropdown(null) }}
+                          onClick={() => { smoothScroll(id); setDropdown(null) }}
                         >
                           <span>{sec.emoji}</span> {sec.title}
                         </button>
@@ -191,7 +183,7 @@ export default function Navbar() {
                   <button
                     key={id}
                     className={`mobile-menu__item ${activeSection === id ? 'active' : ''}`}
-                    onClick={() => { scrollTo(id); setMenuOpen(false) }}
+                    onClick={() => { smoothScroll(id); setMenuOpen(false) }}
                   >
                     {sec.emoji} {sec.title}
                   </button>
@@ -200,7 +192,7 @@ export default function Navbar() {
             </div>
           ))}
           <a
-            href="https://wa.me/56900000000?text=Hola,%20quiero%20cotizar%20un%20servicio"
+            href="https://wa.me/56989198933?text=Hola,%20quiero%20cotizar%20un%20servicio"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn--accent btn--full"

@@ -162,4 +162,45 @@
   .hero__stats {
     grid-template-columns: repeat(2, 1fr);
   }
-}
+}
+
+/* ─── Floating animation ─── */
+@keyframes float {
+  0%   { transform: translateY(0px)              rotate(0deg);   }
+  30%  { transform: translateY(calc(var(--float-y) * -0.6)) rotate(0.4deg);  }
+  60%  { transform: translateY(calc(var(--float-y) * -1))   rotate(-0.3deg); }
+  100% { transform: translateY(0px)              rotate(0deg);   }
+}
+
+.stat-card--float {
+  animation: float var(--float-dur, 4s) ease-in-out var(--float-delay, 0s) infinite;
+  cursor: pointer;
+}
+
+/* Pausa el float al hover para que no "luche" con el transform del hover */
+.stat-card--float:hover {
+  animation-play-state: paused;
+}
+
+/* Flecha indicadora */
+.stat-card__arrow {
+  font-size: .75rem;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity .2s, transform .2s;
+  align-self: flex-end;
+  transform: translateY(-4px);
+}
+
+.stat-card--float:hover .stat-card__arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Solo flotar en escritorio */
+@media (max-width: 768px) {
+  .stat-card--float {
+    animation: none;
+    cursor: default;
+  }
+}

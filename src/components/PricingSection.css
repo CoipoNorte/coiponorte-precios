@@ -196,4 +196,9 @@
 /* Color accent lines per section */
 .pricing-section--blue    .pricing-section__emoji { filter: none; }
 .pricing-section--green   .pricing-table__price   { color: var(--success); }
-.pricing-section--red     .pricing-table__price   { color: var(--danger); }
+.pricing-section--red     .pricing-table__price   { color: var(--danger); }
+
+/* Offset navbar al hacer scroll */
+.pricing-section {
+  scroll-margin-top: 70px;
+}
